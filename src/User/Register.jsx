@@ -1,20 +1,35 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState(0);
   const [role, setRole] = useState('');
   const [specialization, setSpecialization] = useState('');
   const [pastExperiences, setPastExperiences] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async(e) => {
     e.preventDefault();
-    console.log('Registration:', name, email, password, username, phoneNumber, role, specialization, pastExperiences);
+    try {
+      const response = await axios.post('https://skillsyncbackend.onrender.com/auth/register', {
+        name,
+        email,
+        password,
+        username,
+        phoneNumber,
+        role,
+        specialization,
+        pastExperiences
+      });
+      console.log('Registration successful:', response.data);
+    } catch (error) {
+      console.error('Registration failed:', error.response.data);
+    }
   }
 
   const handleVerifyEmail = () => {
@@ -48,7 +63,7 @@ const Register = () => {
         </div>
         <div>
           <label htmlFor="phoneNumber">Phone Number:</label>
-          <input type="tel" id="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
+          <input type="number" id="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
         </div>
         <div>
           <label htmlFor="role">Role:</label>

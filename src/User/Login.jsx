@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
+  const [username, setusername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = (e) => {
+  const handleLogin = async(e) => {
     e.preventDefault();
-    console.log('Login:', email, password);
+    try{
+      const response = await axios.post('https://skillsyncbackend.onrender.com/auth/login' ,
+      {
+        username,
+        password
+      });
+      console.log("Login successful :" , response.data);
+    }catch(e){
+      console.log(e.response.data);
+    }
+    console.log('Login:', username, password);
   }
  
   const handleclick = () =>{
@@ -19,8 +30,8 @@ const Login = () => {
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <div>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <label htmlFor="username">UserName:</label>
+          <input type="text" id="email" value={username} onChange={(e) => setusername(e.target.value)} required />
         </div>
         <div>
           <label htmlFor="password">Password:</label>
