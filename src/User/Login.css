@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif; /* Applying a default font */
+  overflow-x: hidden; /* Ensure horizontal overflow doesn't occur */
+}
+
+.whole {
+  width: 100%;
+  height: 100vh; /* Using full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(88, 101, 242);
+}
+
+.center {
+  width: 80%;
+  max-width: 400px; /* Adjusted maximum width for better responsiveness */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(49, 51, 56);
+  padding: 40px; /* Increased padding for better spacing */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  gap: 20px;
+}
+
+.button {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Style for buttons */
+.button button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(88, 101, 242);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for buttons */
+.button button:hover {
+  background-color: rgb(220, 80, 60);
+}
+
+.center h2 {
+  color: #fff;
+  margin-bottom: 20px; /* Added margin at the bottom of h2 for spacing */
+}
+
+/* Adjusting form inputs */
+.center form div {
+  margin-bottom: 20px; /* Added margin between form elements */
+}
+
+/* Styling labels */
+.center form label {
+  color: #fff;
+}
+
+/* Styling input fields */
+.center form input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+/* Styling submit button */
+.center form button[type="submit"] {
+  background-color: rgb(88, 101, 242);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for submit button */
+.center form button[type="submit"]:hover {
+  background-color: rgb(220, 80, 60);
+}
