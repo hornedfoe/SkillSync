@@ -6,35 +6,13 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [role, setRole] = useState("");
-  const [specialization, setSpecialization] = useState("");
-  const [pastExperiences, setPastExperiences] = useState("");
 
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log(
-      "Registration:",
-      name,
-      email,
-      password,
-      username,
-      phoneNumber,
-      role,
-      specialization,
-      pastExperiences
-    );
-  };
-
-  const handleVerifyEmail = () => {
-    console.log("Verifying email:", email);
+    console.log("Registration:", name, email, password, username);
     navigate("/otp");
-  };
-
-  const handleLoginClick = () => {
-    navigate("/login");
   };
 
   return (
@@ -61,19 +39,6 @@ const Register = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <button type="button" onClick={handleVerifyEmail}>
-              Verify Email
-            </button>
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
           </div>
           <div className="form-group">
             <label htmlFor="username">Username:</label>
@@ -86,41 +51,23 @@ const Register = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="role">Role:</label>
+            <label htmlFor="password">Password:</label>
             <input
-              type="text"
-              id="role"
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </div>
-          <div className="form-group">
-            <label htmlFor="specialization">Specialization:</label>
-            <input
-              type="text"
-              id="specialization"
-              value={specialization}
-              onChange={(e) => setSpecialization(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="pastExperiences">Past Experiences:</label>
-            <textarea
-              id="pastExperiences"
-              value={pastExperiences}
-              onChange={(e) => setPastExperiences(e.target.value)}
-              required
-            ></textarea>
           </div>
           <div className="form-group">
             <button type="submit">Register</button>
           </div>
+          <p style={{ color: "red" }}>Already have an account?</p>
+          <a href="/login" style={{ color: "rgb(8, 148, 218)" }}>
+            Login
+          </a>
         </form>
-        <button onClick={handleLoginClick}>
-          Already have an account? Login
-        </button>
       </div>
     </div>
   );
