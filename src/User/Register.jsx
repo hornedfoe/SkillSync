@@ -12,7 +12,7 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     console.log("Registration:", name, email, password, username);
-    navigate("/otp");
+    navigate("/VerifyOtp");
   };
 
   return (
