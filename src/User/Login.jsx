@@ -3,14 +3,11 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setusername] = useState('');
-  const [password, setPassword] = useState('');
 
   const handleLogin = async(e) => {
     e.preventDefault();
@@ -20,23 +17,8 @@ const Login = () => {
   const handleclick = () => {
     navigate("/register");
   };
-    try{
-      const response = await axios.post('https://skillsyncbackend.onrender.com/auth/login' ,
-      {
-        username,
-        password
-      });
-      console.log("Login successful :" , response.data);
-    }catch(e){
-      console.log(e.response.data);
-    }
-    console.log('Login:', username, password);
-  }
- 
-  const handleclick = () =>{
-      navigate('/register');
-  }
-  return (
+    
+  return(
     <div className="whole">
       <div className="center">
         <h2>Login</h2>
@@ -88,7 +70,8 @@ const Login = () => {
         </button>
       </form>
     </div>
+    </div>
   );
-};
+}
 
 export default Login;
