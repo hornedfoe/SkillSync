@@ -39,6 +39,9 @@ const Login = () => {
           </div>
           <div className="button">
             <button type="submit">Login</button>
+            <a href="/changepassword" style={{ color: "rgb(8, 148, 218)" }}>
+              Forget Password?
+            </a>
           </div>
           <p style={{ color: "red" }}>Need an account?</p>
           <a href="/register" style={{ color: "rgb(8, 148, 218)" }}>
