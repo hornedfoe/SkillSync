@@ -9,7 +9,7 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async(e) => {
     e.preventDefault();
     console.log("Registration:", name, email, password, username);
     navigate("/VerifyOtp");
