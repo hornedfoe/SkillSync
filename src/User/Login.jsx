@@ -8,7 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async(e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try{
       const response = await axios.post('https://skillsyncbackend.onrender.com/auth/login' , {
@@ -49,6 +49,9 @@ const Login = () => {
           </div>
           <div className="button">
             <button type="submit">Login</button>
+            <a href="/changepassword" style={{ color: "rgb(8, 148, 218)" }}>
+              Forget Password?
+            </a>
           </div>
           <p style={{ color: "red" }}>Need an account?</p>
           <a href="/register" style={{ color: "rgb(8, 148, 218)" }}>
@@ -58,6 +61,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Login;
