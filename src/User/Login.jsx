@@ -4,9 +4,9 @@ import "./Login.css";
 import axios from'axios';
 
 const Login = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const Navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -16,6 +16,7 @@ const Login = () => {
           password
       });
       console.log(response.data);
+      Navigate('/');
     }catch(e){
       console.log(e.response.data);
     }

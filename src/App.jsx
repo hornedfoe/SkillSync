@@ -23,6 +23,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/verifyotp" element={<Otp />} />
+            <Route path="/changepassword" element={<Changepassword/>}/>
           </Routes>
         </div>
       </Router>

@@ -2,8 +2,10 @@ import React, { useContext, useState } from "react";
 import "./VerifyOtp.css";
 import axios from 'axios';
 import { Context } from "../App";
+import {useNavigate} from "react";
 const Otp = () => {
   const [otp, setOtp] = useState("");
+  const navigate = useNavigate();
   
   const {name, email , password , username} = useContext(Context);
   const handleResendCode = () => {
@@ -24,6 +26,7 @@ const Otp = () => {
       });
       console.log(response.data);
       if(response.status == 200){
+        navigate('/home');
         const user = await axios.post('https://skillsyncbackend.onrender.com/auth/register' , {
           name, 
           email ,
@@ -34,6 +37,7 @@ const Otp = () => {
           past
         });
         console.log(user.data);
+
       }
     }catch(e){
       console.log(e.response);
@@ -42,10 +46,9 @@ const Otp = () => {
 
   return (
     <div className="whole">
-      {console.log(email)}
+      {console.log(email + " " + otp)}
       <div className="center">
         <h2>Account Verification</h2>
-        <form onSubmit={verify}>
           <div className="form-group">
             <label htmlFor="name">Enter OTP Code:</label>
             <input
@@ -57,7 +60,7 @@ const Otp = () => {
             />
           </div>
           <div className="form-group">
-            <button type="submit">Verify</button>
+            <button onClick={verify}>Verify</button>
           </div>
           <p
             onClick={handleResendCode}
@@ -69,7 +72,6 @@ const Otp = () => {
           >
             Resend Code?
           </p>
-        </form>
       </div>
     </div>
   );
