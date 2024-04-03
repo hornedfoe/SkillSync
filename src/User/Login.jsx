@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import axios from'axios';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -9,6 +10,15 @@ const Login = () => {
 
   const handleLogin = async(e) => {
     e.preventDefault();
+    try{
+      const response = await axios.post('https://skillsyncbackend.onrender.com/auth/login' , {
+          email,
+          password
+      });
+      console.log(response.data);
+    }catch(e){
+      console.log(e.response.data);
+    }
     console.log("Login:", email, password);
   };
 

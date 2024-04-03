@@ -1,17 +1,21 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import axios from 'axios';
+import { useNavigate} from "react-router-dom";
+import { Context } from "../App";
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
 
+  const {name, email , password , username} = useContext(Context);
+  const {setName, setEmail , setPassword , setUsername} = useContext(Context);
   const navigate = useNavigate();
 
   const handleRegister = async(e) => {
     e.preventDefault();
     console.log("Registration:", name, email, password, username);
+    const send = await axios.post('https://skillsyncbackend.onrender.com/auth/sendOtp' , {
+      email
+    });
+    console.log(send.data);
     navigate("/VerifyOtp");
   };
 
