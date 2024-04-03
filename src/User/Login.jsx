@@ -7,7 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async(e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     console.log("Login:", email, password);
   };
@@ -48,6 +48,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Login;
