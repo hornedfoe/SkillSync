@@ -1,0 +1,25 @@
+.core {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(26, 7, 44);
+}
+.left {
+  display: flex;
+  width: calc(100% / 3);
+  background-color: antiquewhite;
+  height: 100vh;
+}
+.center {
+  display: flex;
+  width: calc(100% / 3);;
+  height: 100vh;
+  background-color: aquamarine;
+}
+.right {
+  display: flex;
+  width: calc(100% / 3);
+  background-color: antiquewhite;
+  height: 100vh;
+}
