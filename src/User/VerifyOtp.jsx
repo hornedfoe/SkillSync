@@ -63,7 +63,7 @@ const Otp = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="button">
           <button onClick={verify}>Verify</button>
         </div>
         <p
