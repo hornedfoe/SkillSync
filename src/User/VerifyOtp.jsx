@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import "./VerifyOtp.css";
 import axios from "axios";
 import { Context } from "../App";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useEffect } from "react-router-dom";
 const Otp = () => {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
