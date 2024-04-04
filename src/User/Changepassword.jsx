@@ -14,6 +14,18 @@ const Changepassword = () => {
 
   const navigate = useNavigate();
 
+  const handleResendCode = async () => {
+    setOtp("");
+    try{
+      const response = await axios.post('https://skillsyncbackend.onrender.com/auth/sendOtp' ,{
+        email
+      });
+      console.log(response.data);
+    }catch(e){
+      console.log(e.response.data);
+    }
+    console.log("Resend Code");
+  };
   const handleSendOTP = async (e) => {
     e.preventDefault();
     try {
@@ -100,6 +112,16 @@ const Changepassword = () => {
                 />
                 <div className="button">
                   <button onClick={handleVerifyOTP}>Verify</button>
+                  <p
+                    onClick={handleResendCode}
+                    style={{
+                      color: "rgb(8, 148, 218)",
+                      textDecoration: "underline",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Resend Code?
+                  </p>
                 </div>
               </div>
             )}

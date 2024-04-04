@@ -16,7 +16,7 @@ const Login = () => {
           password
       });
       console.log(response.data);
-      Navigate('/');
+      Navigate('/home');
     }catch(e){
       console.log(e.response.data);
     }
