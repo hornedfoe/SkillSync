@@ -1,4 +1,4 @@
-/* .core {
+.core {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -7,19 +7,19 @@
 }
 .left {
   display: flex;
-  width: calc(100% / 3);
+  width: 20%;
   background-color: antiquewhite;
   height: 100vh;
 }
 .center {
   display: flex;
-  width: calc(100% / 3);;
+  width: 60%;
   height: 100vh;
   background-color: aquamarine;
 }
 .right {
   display: flex;
-  width: calc(100% / 3);
+  width: 20%;
   background-color: antiquewhite;
   height: 100vh;
-} */
+}
