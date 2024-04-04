@@ -8,7 +8,7 @@ import {useState, createContext} from 'react';
 export const Context = createContext()
 import Changepassword from './User/Changepassword.jsx';
 import Core from './heart/core.jsx';
-import Editor from '../mentee/components/Editor.jsx';
+import Editor from './mentee/components/Editor.jsx';
 
 const App = () => {
   
