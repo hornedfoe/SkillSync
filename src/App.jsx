@@ -7,7 +7,7 @@ import Home from './root/home.jsx';
 import {useState, createContext} from 'react';
 export const Context = createContext()
 import Changepassword from './User/Changepassword.jsx';
-import Core from './heart/core.jsx';
+import Core from './heart/Core.jsx';
 import Editor from './mentee/components/Editor.jsx';
 
 const App = () => {
