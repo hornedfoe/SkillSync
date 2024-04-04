@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './Changepassword.css'
+import "./Changepassword.css";
+import axios from "axios";
 
 const Changepassword = () => {
   const [password, setPassword] = useState("");
@@ -9,22 +10,72 @@ const Changepassword = () => {
   const [type, setType] = useState(0);
   const [show, setShow] = useState(0);
   const [otp, setOtp] = useState("");
+  const [valid, isValid] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleSendOTP = (e) => {
+  const handleResendCode = async () => {
+    setOtp("");
+    try{
+      const response = await axios.post('https://skillsyncbackend.onrender.com/auth/sendOtp' ,{
+        email
+      });
+      console.log(response.data);
+    }catch(e){
+      console.log(e.response.data);
+    }
+    console.log("Resend Code");
+  };
+  const handleSendOTP = async (e) => {
     e.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://skillsyncbackend.onrender.com/auth/sendOtp",
+        {
+          email,
+        }
+      );
+      console.log(response.data);
+    } catch (e) {
+      console.log(e.response.data);
+    }
     setShow(1);
   };
 
-  const handleVerifyOTP = (e) => {
+  const handleVerifyOTP = async (e) => {
     e.preventDefault();
-    setType(1);
+    try {
+      const response = await axios.post(
+        "https://skillsyncbackend.onrender.com/auth/validateOtp",
+        {
+          email: email,
+          otp: otp,
+        }
+      );
+      isValid(true);
+      setType(1);
+    } catch (e) {
+      console.log(e.response.data);
+    }
   };
 
-  const updateOtp = (e) => {
+  const updateOtp = async (e) => {
     e.preventDefault();
-    navigate('/login');
+    if (isValid) {
+      try {
+        const response = await axios.post(
+          "https://skillsyncbackend.onrender.com/auth/changePassword",
+          {
+            email,
+            password,
+          }
+        );
+        console.log(response.data);
+        navigate("/login");
+      } catch (e) {
+        console.log(e.response.data);
+      }
+    }
   };
 
   return (
@@ -61,6 +112,16 @@ const Changepassword = () => {
                 />
                 <div className="button">
                   <button onClick={handleVerifyOTP}>Verify</button>
+                  <p
+                    onClick={handleResendCode}
+                    style={{
+                      color: "rgb(8, 148, 218)",
+                      textDecoration: "underline",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Resend Code?
+                  </p>
                 </div>
               </div>
             )}

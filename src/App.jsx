@@ -40,6 +40,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/verifyotp" element={<Otp />} />
+            <Route path="/changepassword" element={<Changepassword/>}/>
             <Route path = "/test" element= {<Editor data={sampleData} edit={!true} />}/>
           </Routes>
         </div>

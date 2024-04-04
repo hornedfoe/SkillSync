@@ -12,11 +12,25 @@ const Register = () => {
   const handleRegister = async(e) => {
     e.preventDefault();
     console.log("Registration:", name, email, password, username);
-    const send = await axios.post('https://skillsyncbackend.onrender.com/auth/sendOtp' , {
-      email
-    });
-    console.log(send.data);
-    navigate("/VerifyOtp");
+    try{
+      const available = await axios.post('https://skillsyncbackend.onrender.com/auth/isAvailable',{
+        email ,
+        username
+      });
+      console.log(available.data);
+      if(available.status == 200){
+        const send = await axios.post('https://skillsyncbackend.onrender.com/auth/sendOtp' , {
+          email
+        });
+        console.log(send.data);
+        navigate('/verifyOtp');
+      }else{
+        throw new Exception(available.status);
+      }
+    }
+    catch(e){
+      console.log(e.response.data);
+    }
   };
 
   return (
