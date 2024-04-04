@@ -7,6 +7,7 @@ import Home from './root/home.jsx';
 import {useState, createContext} from 'react';
 export const Context = createContext()
 import Changepassword from './User/Changepassword.jsx';
+import Core from './heart/core.jsx';
 
 const App = () => {
   const [name, setName] = useState("");
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/verifyotp" element={<Otp />} />
             <Route path="/changepassword" element={<Changepassword/>}/>
+            <Route path="/home" element={<Core/>}/>
           </Routes>
         </div>
       </Router>

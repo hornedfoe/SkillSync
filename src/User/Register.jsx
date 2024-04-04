@@ -8,7 +8,6 @@ const Register = () => {
   const {name, email , password , username} = useContext(Context);
   const {setName, setEmail , setPassword , setUsername} = useContext(Context);
   const navigate = useNavigate();
-
   const handleRegister = async(e) => {
     e.preventDefault();
     console.log("Registration:", name, email, password, username);

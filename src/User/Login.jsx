@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import axios from'axios';
@@ -7,7 +7,14 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const Navigate = useNavigate();
+  const [userData, setUserData] = useState(() => {
+    const storedUserData = localStorage.getItem('userData');
+    return storedUserData ? JSON.parse(storedUserData) : {};
+  });
 
+  useEffect(() => {
+    localStorage.setItem('userData', JSON.stringify(userData));
+  }, [userData]);
   const handleLogin = async (e) => {
     e.preventDefault();
     try{
@@ -15,12 +22,12 @@ const Login = () => {
           email,
           password
       });
-      console.log(response.data);
+      setUserData(response.data);
+      localStorage.setItem('userData', JSON.stringify(response.data));
       Navigate('/home');
     }catch(e){
       console.log(e.response.data);
     }
-    console.log("Login:", email, password);
   };
 
   return (

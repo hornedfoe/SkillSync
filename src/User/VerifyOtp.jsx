@@ -6,7 +6,13 @@ import { useNavigate } from "react-router-dom";
 const Otp = () => {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
-
+  const [userData, setUserData] = useState(() => {
+    const storedUserData = localStorage.getItem('userData');
+    return storedUserData ? JSON.parse(storedUserData) : {};
+  });
+  useEffect(() => {
+    localStorage.setItem('userData', JSON.stringify(userData));
+  }, [userData]);
   const { name, email, password, username } = useContext(Context);
   const handleResendCode = async() => {
     setOtp("");
@@ -14,6 +20,8 @@ const Otp = () => {
       const response = await axios.post('https://skillsyncbackend.onrender.com/auth/sendOtp' ,{
         email
       });
+      setUserData(response.data);
+      localStorage.setItem('userData', JSON.stringify(response.data));
       console.log(response.data);
     }catch(e){
       console.log(e.response.data);
