@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './Changepassword.css'
-import axios from 'axios';
+import "./Changepassword.css";
+import axios from "axios";
 
 const Changepassword = () => {
   const [password, setPassword] = useState("");
@@ -10,47 +10,59 @@ const Changepassword = () => {
   const [type, setType] = useState(0);
   const [show, setShow] = useState(0);
   const [otp, setOtp] = useState("");
-  const [valid , isValid] = useState(false);
+  const [valid, isValid] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleSendOTP = async(e) => {
+  const handleSendOTP = async (e) => {
     e.preventDefault();
-    try{
-      const response = await axios.post('https://skillsyncbackend.onrender.com/auth/sendOtp' , {
-        email
-      })
+    try {
+      const response = await axios.post(
+        "https://skillsyncbackend.onrender.com/auth/sendOtp",
+        {
+          email,
+        }
+      );
       console.log(response.data);
-    }
-    catch(e){
+    } catch (e) {
       console.log(e.response.data);
     }
     setShow(1);
   };
 
-  const handleVerifyOTP = async(e) => {
+  const handleVerifyOTP = async (e) => {
     e.preventDefault();
-    try{
-      const response = await axios.post('https://skillsyncbackend.onrender.com/auth/validateOtp' ,{
-        email ,
-        otp
-      });
+    try {
+      const response = await axios.post(
+        "https://skillsyncbackend.onrender.com/auth/validateOtp",
+        {
+          email: email,
+          otp: otp,
+        }
+      );
       isValid(true);
-    }catch(e){
-      console.log(e);
+      setType(1);
+    } catch (e) {
+      console.log(e.response.data);
     }
-    setType(1);
   };
 
-  const updateOtp = async(e) => {
+  const updateOtp = async (e) => {
     e.preventDefault();
-    if(isValid){
-      const response = await axios.post('https://skillsyncbackend.onrender.com/auth/changePassword' ,{
-        email ,
-        password
-      })
-      console.log(response.data);
-      navigate('/login');
+    if (isValid) {
+      try {
+        const response = await axios.post(
+          "https://skillsyncbackend.onrender.com/auth/changePassword",
+          {
+            email,
+            password,
+          }
+        );
+        console.log(response.data);
+        navigate("/login");
+      } catch (e) {
+        console.log(e.response.data);
+      }
     }
   };
 
