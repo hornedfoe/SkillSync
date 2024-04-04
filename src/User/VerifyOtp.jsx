@@ -8,7 +8,16 @@ const Otp = () => {
   const navigate = useNavigate();
 
   const { name, email, password, username } = useContext(Context);
-  const handleResendCode = () => {
+  const handleResendCode = async() => {
+    setOtp("");
+    try{
+      const response = await axios.post('https://skillsyncbackend.onrender.com/auth/sendOtp' ,{
+        email
+      });
+      console.log(response.data);
+    }catch(e){
+      console.log(e.response.data);
+    }
     console.log("Resend Code");
   };
 
