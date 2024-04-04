@@ -33,8 +33,8 @@ const Register = () => {
   };
 
   return (
-    <div className="whole">
-      <div className="center">
+    <div className="whole-login">
+      <div className="center-login">
         <h2>Register</h2>
         <form onSubmit={handleRegister}>
           <div className="form-group">

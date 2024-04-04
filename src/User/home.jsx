@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./home.css";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -14,10 +13,10 @@ const Home = () => {
   };
 
   return (
-    <div className="whole">
-      <div className="center">
+    <div className="whole-login">
+      <div className="center-login">
         <h2>Welcome to SkillSync</h2>
-        <div className="button">
+        <div className="button-login">
           <button onClick={handleLoginClick}>Login</button>
           <button onClick={handleRegisterClick}>Register</button>
         </div>

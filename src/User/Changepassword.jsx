@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Changepassword.css";
 import axios from "axios";
 
 const Changepassword = () => {
@@ -16,12 +15,15 @@ const Changepassword = () => {
 
   const handleResendCode = async () => {
     setOtp("");
-    try{
-      const response = await axios.post('https://skillsyncbackend.onrender.com/auth/sendOtp' ,{
-        email
-      });
+    try {
+      const response = await axios.post(
+        "https://skillsyncbackend.onrender.com/auth/sendOtp",
+        {
+          email,
+        }
+      );
       console.log(response.data);
-    }catch(e){
+    } catch (e) {
       console.log(e.response.data);
     }
     console.log("Resend Code");
@@ -79,8 +81,8 @@ const Changepassword = () => {
   };
 
   return (
-    <div className="whole">
-      <div className="center">
+    <div className="whole-login">
+      <div className="center-login">
         <h2>Account Recovery</h2>
         {type === 0 ? (
           <form onSubmit={handleSendOTP}>
@@ -96,7 +98,7 @@ const Changepassword = () => {
               />
             </div>
             {show === 0 ? (
-              <div className="button">
+              <div className="button-login">
                 <button onClick={handleSendOTP}>Send OTP</button>
               </div>
             ) : (
@@ -110,7 +112,7 @@ const Changepassword = () => {
                   onChange={(e) => setOtp(e.target.value)}
                   required
                 />
-                <div className="button">
+                <div className="button-login">
                   <button onClick={handleVerifyOTP}>Verify</button>
                   <p
                     onClick={handleResendCode}
@@ -154,7 +156,7 @@ const Changepassword = () => {
               <div>Passwords do not match</div>
             )}
             {password === cpassword ? (
-              <div className="button">
+              <div className="button-login">
                 <button type="submit">Change</button>
               </div>
             ) : (

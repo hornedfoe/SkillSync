@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect  } from "react";
-import "./VerifyOtp.css";
 import axios from "axios";
 import { Context } from "../App";
 import { useNavigate} from "react-router-dom";
@@ -66,9 +65,9 @@ const Otp = () => {
   };
 
   return (
-    <div className="whole">
+    <div className="whole-login">
       {console.log(email + " " + otp)}
-      <div className="center">
+      <div className="center-login">
         <h2>Account Verification</h2>
         <div className="form-group">
           <label htmlFor="name">Enter OTP Code:</label>
@@ -80,7 +79,7 @@ const Otp = () => {
             required
           />
         </div>
-        <div className="button">
+        <div className="button-login">
           <button onClick={verify}>Verify</button>
         </div>
         <p

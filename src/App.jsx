@@ -1,14 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {useState, createContext} from 'react';
+
+import Home from './User/home.jsx';
 import Login from './User/Login.jsx';
 import Register from './User/Register.jsx';
 import Otp from './User/VerifyOtp.jsx';
-import Home from './root/home.jsx';
-import {useState, createContext} from 'react';
-export const Context = createContext()
 import Changepassword from './User/Changepassword.jsx';
 import Core from './heart/Core.jsx';
 import Editor from './mentee/components/Editor.jsx';
+
+export const Context = createContext();
 
 const App = () => {
   

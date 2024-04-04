@@ -31,8 +31,8 @@ const Login = () => {
   };
 
   return (
-    <div className="whole">
-      <div className="center">
+    <div className="whole-login">
+      <div className="center-login">
         <h2>Login</h2>
         <form onSubmit={handleLogin}>
           <div className="form-group">
@@ -55,7 +55,7 @@ const Login = () => {
               required
             />
           </div>
-          <div className="button">
+          <div className="button-login">
             <button type="submit">Login</button>
             <a href="/changepassword" style={{ color: "rgb(8, 148, 218)" }}>
               Forget Password?
