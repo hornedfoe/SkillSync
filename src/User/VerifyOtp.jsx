@@ -53,7 +53,7 @@ const Otp = () => {
         console.log(user.data);
       }
     } catch (e) {
-      console.log(e.response);
+      console.log(e.response.data);
     }
   };
 
