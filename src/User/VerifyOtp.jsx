@@ -1,28 +1,31 @@
-import React, { useContext, useState, useEffect  } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { Context } from "../App";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Otp = () => {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
   const [userData, setUserData] = useState(() => {
-    const storedUserData = localStorage.getItem('userData');
+    const storedUserData = localStorage.getItem("userData");
     return storedUserData ? JSON.parse(storedUserData) : {};
   });
   useEffect(() => {
-    localStorage.setItem('userData', JSON.stringify(userData));
+    localStorage.setItem("userData", JSON.stringify(userData));
   }, [userData]);
   const { name, email, password, username } = useContext(Context);
-  const handleResendCode = async() => {
+  const handleResendCode = async () => {
     setOtp("");
-    try{
-      const response = await axios.post('https://skillsyncbackend.onrender.com/auth/sendOtp' ,{
-        email
-      });
+    try {
+      const response = await axios.post(
+        "https://skillsyncbackend.onrender.com/auth/sendOtp",
+        {
+          email,
+        }
+      );
       setUserData(response.data);
-      localStorage.setItem('userData', JSON.stringify(response.data));
+      localStorage.setItem("userData", JSON.stringify(response.data));
       console.log(response.data);
-    }catch(e){
+    } catch (e) {
       console.log(e.response.data);
     }
     console.log("Resend Code");
@@ -69,29 +72,31 @@ const Otp = () => {
       {console.log(email + " " + otp)}
       <div className="center-login">
         <h2>Account Verification</h2>
-        <div className="form-group">
-          <label htmlFor="name">Enter OTP Code:</label>
-          <input
-            type="text"
-            id="otp"
-            value={otp}
-            onChange={(e) => setOtp(e.target.value)}
-            required
-          />
-        </div>
-        <div className="button-login">
-          <button onClick={verify}>Verify</button>
-        </div>
-        <p
-          onClick={handleResendCode}
-          style={{
-            color: "rgb(8, 148, 218)",
-            textDecoration: "underline",
-            cursor: "pointer",
-          }}
-        >
-          Resend Code?
-        </p>
+        <form onSubmit={verify}>
+          <div className="form-group">
+            <label htmlFor="name">Enter OTP Code:</label>
+            <input
+              type="text"
+              id="otp"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+              required
+            />
+          </div>
+          <div className="button-login">
+            <button onSubmit={verify}>Verify</button>
+          </div>
+          <p
+            onClick={handleResendCode}
+            style={{
+              color: "rgb(8, 148, 218)",
+              textDecoration: "underline",
+              cursor: "pointer",
+            }}
+          >
+            Resend Code?
+          </p>
+        </form>
       </div>
     </div>
   );
